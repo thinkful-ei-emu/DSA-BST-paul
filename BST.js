@@ -318,15 +318,13 @@ function sameBSTr(arr1,arr2){
     return false;
   let allBigger1=[];
   let allSmaller1=[];
+  let allBigger2=[];
+  let allSmaller2=[];
   for(let i=1;i<arr1.length;i++){
     if(arr1[i]>=arr1[0])
       allBigger1.push(arr1[i]);
     else
       allSmaller1.push(arr1[i]);
-  }
-  let allBigger2=[];
-  let allSmaller2=[];
-  for(let i=1;i<arr2.length;i++){
     if(arr2[i]>=arr2[0])
       allBigger2.push(arr2[i]);
     else
