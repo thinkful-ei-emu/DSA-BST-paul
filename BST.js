@@ -339,6 +339,30 @@ function sameBSTr(arr1,arr2){
   return true;
 }
 
+function arrayToBST(arr){
+  let root= new BinarySearchTree();
+  arr2BSTr(arr,0,arr.length-1,root);
+  display(root);
+  return root;
+}
+
+function arr2BSTr(arr,start,end,node){
+  if(start>end)
+    return;
+  const middle=Math.floor((start+end)/2);
+  node.key=arr[middle];
+  node.value=arr[middle];
+
+  //only time we don't go into this block is if start===end, so it's a leaf node.
+  if(start<end){
+    let rightNode=new BinarySearchTree(null,null,node);
+    node.right=rightNode;
+    let leftNode=new BinarySearchTree(null,null,node);
+    node.left=leftNode;
+    arr2BSTr(arr,start,middle-1,leftNode);
+    arr2BSTr(arr,middle+1,end,rightNode);
+  }
+}
 
 function main(){
   const rootNode=new BinarySearchTree();
@@ -387,6 +411,7 @@ function main(){
   console.log(balancedBST(rootNode));
   sameBST([3,5,4,6,1,0,2],[3,1,5,2,4,6,0]);
   sameBST([3,5,4,6,1,0,2],[3,1,5,2,4,6,3]);
+  arrayToBST([3,5,7,9,11,13,15]);
 }
 main();
 
@@ -399,3 +424,4 @@ function tree(t){
   }
   return tree(t.left) + t.value + tree(t.right);
 }
+
